@@ -83,7 +83,7 @@ ImageDetector/
 
 ## 📸 Example Results
 
-![Fig Image]('https://github.com/thajucp123/image-identifier/blob/main/static/images/fig.jpg?raw=true')
+<img src="fig.jpg" alt="Fig image" width="300" height="200">
 
 | Object | Confidence |
 | :--- | :--- |
