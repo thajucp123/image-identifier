@@ -1,21 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>result Page</title>
+    <title>Image Detector - Results</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Image Detection Result</h1>
-    <hr>
-    {% if results %}
-        <p>The image is most likely a <strong>{{ results.0.0 }}</strong> with a <strong>{{ results.0.1|floatformat:2 }}%</strong> confidence.</p>
-    {% endif %}
-    <hr>
+    <header>
+        <h1>Detection Results</h1>
+        <p>Analysis complete</p>
+    </header>
 
-    <h3>All Detections:</h3>
-    {% for r, p in results %}
-        <p>{{ r }}: {{ p|floatformat:2 }}%</p>
-    {% endfor %}
+    <main>
+        <div class="container">
+            {% if results %}
+                <div class="top-prediction">
+                    <p>Primary Identification:</p>
+                    <h2>{{ results.0.0 }}</h2>
+                    <p class="confidence">{{ results.0.1|floatformat:2 }}% Confidence</p>
+                </div>
+
+                <div class="all-detections">
+                    <h3>Detailed Breakdown</h3>
+                    <hr style="border: 0; border-top: 1px solid rgba(136, 146, 176, 0.2); margin: 1rem 0;">
+                    {% for r, p in results %}
+                        <div class="detection-item">
+                            <span class="label">{{ r }}</span>
+                            <span class="confidence">{{ p|floatformat:2 }}%</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="top-prediction">
+                    <h2>No Detections Found</h2>
+                    <p>Please try again with a different image.</p>
+                </div>
+            {% endif %}
+
+            <a href="/" class="back-link">← Identify another image</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Image Detector AI Project</p>
+    </footer>
 </body>
 </html>

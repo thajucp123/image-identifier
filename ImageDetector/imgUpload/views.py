@@ -22,7 +22,7 @@ def imageprocess(request):
         handle_uploaded_file(request.FILES['image'])
 
         model = ResNet50(weights='imagenet')
-        img_path = '../static/images/fig.jpg'
+        img_path = 'uploaded_image.jpg'
 
         # prediction
         image_file = keras.utils.load_img(img_path, target_size=(224, 224))

@@ -1,17 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Detector Homepage</title>
+    <title>Image Detector - Upload</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Welcome to Image Object Identifier</h1>
-    <p>Upload an image to detect and identifyobjects.</p>
-    <form action="/imgUpload/imageprocess" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Upload</button>
-    </form>
+    <header>
+        <h1>Image Object Identifier</h1>
+        <p>Harnessing AI to recognize the world around you</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="results-header">
+                <h2>Ready to Identify?</h2>
+                <p>Upload a clear image of an object to see what the AI thinks.</p>
+            </div>
+            
+            <form action="/imgUpload/imageprocess" method="post" enctype="multipart/form-data" class="upload-form">
+                {% csrf_token %}
+                <div class="file-input-wrapper">
+                    <input type="file" name="image" accept="image/*" required>
+                </div>
+                <button type="submit">Identify Object</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Image Detector AI Project</p>
+        <a href="https://github.com/thajucp123/image-identifier" target="_blank" class="footer-link"> Github repo</a>
+    </footer>
 </body>
 </html>
