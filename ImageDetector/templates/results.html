@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>result Page</title>
+</head>
+<body>
+    <h1>Image Detection Result</h1>
+    <hr>
+    {% if results %}
+        <p>The image is most likely a <strong>{{ results.0.0 }}</strong> with a <strong>{{ results.0.1|floatformat:2 }}%</strong> confidence.</p>
+    {% endif %}
+    <hr>
+
+    <h3>All Detections:</h3>
+    {% for r, p in results %}
+        <p>{{ r }}: {{ p|floatformat:2 }}%</p>
+    {% endfor %}
+</body>
+</html>

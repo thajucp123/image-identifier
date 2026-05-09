@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detector Homepage</title>
+</head>
+<body>
+    <h1>Welcome to Image Object Identifier</h1>
+    <p>Upload an image to detect and identifyobjects.</p>
+    <form action="/imgUpload/imageprocess" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
